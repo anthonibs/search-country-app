@@ -5,6 +5,7 @@
     width: 320px;
     max-width: 100%;
     background-color: white;
+    color: hsl(200, 15%, 8%);
     box-shadow: rgba(0, 0, 0, 0.05) 0px 3px 6px, rgba(0, 0, 0, 0.10) 0px 3px 6px;
 
     &__image {
@@ -13,8 +14,6 @@
             display: block;
             width: 100%;
             height: 170px;
-            object-fit: cover;
-            object-position: center;
         }
     }
 
@@ -41,4 +40,14 @@
             font-size: 14px;
         }
     }
+}
+
+.link__expand {
+    transition: all .3s ease-in;
+    transform: scale(1);
+}
+
+.link__expand:hover {
+    transition: all .5s ease-out;
+    transform: scale(1.03);
 }

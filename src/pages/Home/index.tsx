@@ -1,35 +1,53 @@
 import Card from "assets/components/Card";
-import FieldInput from "assets/components/FieldInpunt";
-import ICountry from "interfaces/ICountry";
+import FieldInput from "pages/Home/FieldInpunt";
 import { useEffect, useState } from "react";
+import Filter from "./Filter";
 import styles from "./Home.module.scss";
-
 
 const Home = () => {
 
     const [countrys, setCountrys] = useState<any[]>([]);
+    const [country, setCountry] = useState<string>("");
+    const [ordenador, setOrdenador] = useState("");
+
+    function carregaURL(url: string, opt?: any) {
+        fetch(url, opt)
+            .then(response => response.json())
+            .then(data => {
+                setCountrys(data);
+
+            })
+            .catch(erro => {
+                console.log(erro);
+            })
+    }
 
     useEffect(() => {
-        loadCountry();
-    }, []);
+        carregaURL("https://restcountries.com/v3.1/all");
+    }, [ordenador])
 
-    async function loadCountry() {
-        try {
-            const response = await fetch("https://restcountries.com/v3.1/all");
-            const data = await response.json();
-            if (!response.ok) {
-                throw Error("Ocorreu um erro no servidor.");
-            }
-            const ordemAleatoria = data.sort(() => (Math.random() > .5 ? 1 : -1));
+    function testaBusca(title: string) {
+        const regex = new RegExp(country, "i");
+        return regex.test(title);
+    }
 
-            return setCountrys(ordemAleatoria.slice(0, 8));
-
-        } catch (error) {
-            console.log(error);
-            alert("Ocorreu um erro de conexão ao servidor.");
+    function listaDeNove() {
+        if (country.length > 0) {
+            return (countrys.filter(el => testaBusca(el.name.common)));
         }
 
+        if (ordenador !== "") {
+            return countrys.filter(mapa => mapa.region == ordenador)
+        }
+
+
+        const randomOrder = countrys.sort(() => Math.random() > .5 ? 1 : -1);
+        const spliceCountry = randomOrder.slice(0, 9);
+
+        return spliceCountry
     }
+
+
 
     return (
         <main className={styles.container}>
@@ -38,12 +56,24 @@ const Home = () => {
                     <FieldInput
                         type="search"
                         placeholder="Search for a country..."
+                        value={country}
+                        onChange={setCountry}
+
                     />
+                    <Filter ordenador={ordenador} setOrdenador={setOrdenador} />
                 </div>
                 <div className={styles.wrapper}>
-                    {countrys.map((country, index) => (
-                        <Card key={index} country={country} />
-                    ))}
+                    {listaDeNove().length > 0
+                        ? listaDeNove()?.map((country, index) => (
+                            <Card key={index} country={country} />
+                        ))
+                        : <h2 className={styles.message}>
+                            Loading countries
+                            <span>.</span>
+                            <span className={styles.laoding}>.</span>
+                            <span>.</span>
+                        </h2>
+                    }
                 </div>
             </section>
         </main>

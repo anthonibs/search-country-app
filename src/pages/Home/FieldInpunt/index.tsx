@@ -2,13 +2,16 @@ import styles from "./FieldInpunt.module.scss";
 import { BiSearchAlt2 } from "react-icons/bi";
 
 interface IFieldInput {
-    type?: string
-    required?: boolean
-    placeholder?: string
+    type?: string;
+    required?: boolean;
+    placeholder?: string;
+    value: string;
+    onChange: React.Dispatch<React.SetStateAction<string>>;
 }
 
 
-const FieldInput = ({ type = "text", required, placeholder }: IFieldInput) => {
+const FieldInput = ({ type = "text", required, placeholder, value, onChange }: IFieldInput) => {
+
 
     return (
         <fieldset className={styles.control}>
@@ -17,6 +20,8 @@ const FieldInput = ({ type = "text", required, placeholder }: IFieldInput) => {
                 type={type}
                 required={required}
                 placeholder={placeholder}
+                value={value}
+                onChange={event => onChange(event.target.value)}
             />
         </fieldset>
     );

@@ -20,22 +20,11 @@
         "@typescript-eslint"
     ],
     "rules": {
-        "indent": [
-            "error",
-            "4"
-        ],
-        "linebreak-style": [
-            "error",
-            "unix"
-        ],
+        "eqeqeq": "off",
+        "curly": "error",
         "quotes": [
             "error",
             "double"
-        ],
-        "semi": [
-            "error",
-            "always" //always  quer ';' ou nao
-        ],
-        "react/react-in-jsx-scope": "off"
+        ]
     }
 }
