@@ -2,8 +2,9 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import styles from "./Country.module.scss";
-import CountryInformation from "./CountryInformation/inde";
+import CountryInformation from "./CountryInformation";
 import { HiArrowNarrowLeft } from "react-icons/hi"
+import ICountry from "interfaces/ICountry";
 
 
 const Country = () => {
@@ -11,8 +12,7 @@ const Country = () => {
     const navigate = useNavigate();
     const { nameParams } = useParams()
 
-    const [info, setInfo] = useState<any[]>([])
-
+    const [info, setInfo] = useState<ICountry[]>([])
 
 
     function carregaURL(url: string) {
@@ -31,7 +31,7 @@ const Country = () => {
         carregaURL(`https://restcountries.com/v3.1/name/${nameParams}`);
     }, [])
 
-
+    
     function handleClick() {
         navigate(-1)
     }
@@ -64,3 +64,4 @@ const Country = () => {
 }
 
 export default Country;
+

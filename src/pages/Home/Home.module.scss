@@ -1,61 +1,4 @@
-.container {
-    position: relative;
-    top: 70px;
-    height: 100%;
-    min-height: calc(100vh - 70px);
-    background-color: hsl(0, 0%, 98%);
-
-    .section {
-        width: 90%;
-        margin: 0 auto;
-        padding-bottom: 4rem;
-    }
-
-    .group {
-        display: flex;
-        justify-content: space-between;
-        width: 100%;
-        margin: 1.6rem 0 3rem;
-    }
-
-    .wrapper {
-        display: flex;
-        width: 100%;
-        flex-wrap: wrap;
-        gap: 2rem;
-        justify-content: space-between;
-    }
-
-    .message {
-        font-size: 1.625rem;
-        color: hsl(200, 15%, 8%);
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        position: relative;
-
-        >span {
-            color: inherit;
-            font-size: inherit;
-            font-weight: bold;
-            letter-spacing: 5px;
-            position: relative;
-        }
-
-        >span:nth-child(1) {
-            animation: loading .3s linear alternate;
-        }
-
-        >span:nth-child(2) {
-            animation: loading 0.5s linear .6s alternate;
-        }
-
-        >span:nth-child(3) {
-            animation: loading 0.5s infinite .8s alternate;
-        }
-    }
-}
-
+// Animações
 @keyframes loading {
     from {
         top: 0px;
@@ -63,5 +6,92 @@
 
     to {
         top: 8px;
+    }
+}
+
+
+//  Media queries mobile
+@media screen and (min-width: 375px) {
+
+    .container {
+        position: relative;
+        top: 70px;
+        width: 100%;
+        margin: 0 auto;
+        height: 100%;
+        min-height: calc(100vh - 70px);
+        background-color: hsl(0, 0%, 98%);
+
+        .section {
+            width: 90%;
+            margin: 0 auto;
+            padding-bottom: 4rem;
+        }
+
+        .group {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 100%;
+            gap: 2rem;
+            margin: 1.6rem 0 3rem;
+        }
+
+        .wrapper {
+            display: flex;
+            width: 100%;
+            flex-wrap: wrap;
+            gap: 2rem;
+            justify-content: center;
+        }
+
+        .message {
+            font-size: 1.625rem;
+            color: hsl(200, 15%, 8%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+
+            >span {
+                color: inherit;
+                font-size: inherit;
+                font-weight: bold;
+                letter-spacing: 5px;
+                position: relative;
+            }
+
+            >span:nth-child(1) {
+                animation: loading .3s linear alternate;
+            }
+
+            >span:nth-child(2) {
+                animation: loading 0.5s linear .6s alternate;
+            }
+
+            >span:nth-child(3) {
+                animation: loading 0.5s infinite .8s alternate;
+            }
+        }
+    }
+}
+
+
+// Media queries tablet and desktop
+@media screen and (min-width: 768px) {
+
+    .container {
+
+        .section {
+            width: 85%;
+        }
+
+        .group {
+            flex-direction: row;
+        }
+
+        .wrapper {
+            justify-content: space-between;
+        }
     }
 }

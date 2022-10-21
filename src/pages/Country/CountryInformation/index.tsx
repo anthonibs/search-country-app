@@ -1,5 +1,6 @@
 import styles from "./CountryInformation.module.scss";
 
+
 const CountryInformation = ({ nation }: any) => {
 
     const { name, flags, population, capital, region, subregion, tld, currencies, languages, borders } = nation
@@ -35,7 +36,7 @@ const CountryInformation = ({ nation }: any) => {
                 <div className={styles.tags}>
                     <h3>Border Countries: </h3>
 
-                    {borders == undefined ? "" : borders.map((frontier: any) =>
+                    {borders == undefined ? "" : borders.map((frontier: string) =>
                         <span
                             key={frontier}
                             className={styles.tag}
