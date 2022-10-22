@@ -1,6 +1,6 @@
 // import { INation } from "interfaces/INation";
 import { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import styles from "./Country.module.scss";
 import CountryInformation from "./CountryInformation";
 import { HiArrowNarrowLeft } from "react-icons/hi"
@@ -31,22 +31,16 @@ const Country = () => {
         carregaURL(`https://restcountries.com/v3.1/name/${nameParams}`);
     }, [])
 
-    
-    function handleClick() {
-        navigate(-1)
-    }
+
 
 
     return (
         <main className={styles.container}>
             <div className={styles.wrapper}>
-                <button
-                    className={styles.btn__back}
-                    onClick={handleClick}
-                >
+                <Link to={"/"} className={styles.btn__back}>
                     <HiArrowNarrowLeft />
                     Back
-                </button>
+                </Link>
 
                 {info.length > 0
                     ? <CountryInformation nation={info[0]} />
