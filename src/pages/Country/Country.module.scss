@@ -1,3 +1,5 @@
+@use "/src/styles/variables";
+
 @keyframes loading {
     from {
         top: 0px;
@@ -10,46 +12,43 @@
 
 @media screen and (min-width: 375px) {
     .container {
-        width: 100%;
-        background-color: whitesmoke;
+        background-color: var(--background);
         height: 100%;
         min-height: calc(100vh - 70px);
         position: relative;
         top: 70px;
+        width: 100%;
 
         .wrapper {
-            width: 80%;
             margin: 0 auto;
             padding: 3rem 0;
+            width: 80%;
 
             .btn__back {
-                display: flex;
-                width: 120px;
-                cursor: pointer;
-                line-height: 1;
-                gap: .6rem;
-                color: hsl(200, 15%, 8%);
-                padding: .6rem 1rem;
-                margin-bottom: 4rem;
-                background-color: whitesmoke;
+                background-color: var(--background-header);
                 border-radius: .3rem;
-                border: 2px transparent solid;
-                box-shadow: rgba(0, 0, 0, .10) 0px 1px 4px;
+                box-shadow: variables.$shadow;
+                cursor: pointer;
+                color: var(--color-text);
+                display: flex;
+                gap: .6rem;
+                line-height: 1;
+                margin-bottom: 4rem;
+                padding: .8rem 1rem;
                 transition: all .5s ease-in-out;
+                width: 120px;
 
                 &:hover {
-                    background-color: rgba(211, 211, 211, .25);
-                    border: 2px outset hsla(200, 15%, 8%, .05);
-
+                    background-color: var(--background-hover);
                 }
             }
 
             .message {
-                font-size: 1.625rem;
-                color: hsl(200, 15%, 8%);
-                display: flex;
-                justify-content: center;
                 align-items: center;
+                color: var(--color-text);
+                display: flex;
+                font-size: variables.$font-title;
+                justify-content: center;
                 position: relative;
 
                 >span {
@@ -73,8 +72,5 @@
                 }
             }
         }
-
-
     }
-
 }

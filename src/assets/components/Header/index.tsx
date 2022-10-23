@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { BsMoonStarsFill, BsSunFill } from "react-icons/bs";
 import styles from "./Header.module.scss";
 
@@ -8,22 +8,29 @@ interface IProps {
 
 
 const Header = ({ title }: IProps) => {
+    const storedTheme = localStorage.getItem("theme") || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
 
     const [theme, setTheme] = useState({
         status: false,
-        text: "Dark Mode"
+        text: "Dark Mode",
+        theme: "light"
     })
 
     function isActiveTheme() {
         if (theme.status) {
-            setTheme({ status: false, text: "Dark Mode" })
+            setTheme({ status: false, text: "Dark Mode", theme: "light" })
+            localStorage.setItem("theme", theme.theme);
         }
 
         if (theme.status === false) {
-            setTheme({ status: true, text: "Light Mode" })
+            setTheme({ status: true, text: "Light Mode", theme: "dark" })
+            localStorage.setItem("theme", theme.theme);
         }
     }
-  
+
+    useEffect(() => {
+        window.document.documentElement.setAttribute("data-theme", storedTheme);
+    }, [storedTheme])
 
     return (
         <header className={styles.header}>

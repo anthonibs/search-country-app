@@ -1,39 +1,39 @@
 .control {
+    height: 50px;
     position: relative;
     width: 240px;
-    height: 50px;
     z-index: 1000;
 
     .select {
-        position: relative;
-        display: flex;
-        justify-content: space-between;
         align-items: center;
-        height: 50px;
-        background-color: white;
-        color: hsl(200, 15%, 8%);
+        background-color: var(--background-header);
         box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
         border-radius: .325rem;
+        color: var(--color-text);
+        display: flex;
+        height: 50px;
+        justify-content: space-between;
+        position: relative;
 
         .select__active {
-            display: flex;
-            width: 100%;
-            padding: 0 1.6rem;
             align-items: center;
+            display: flex;
             justify-content: space-between;
+            padding: 0 1.6rem;
+            width: 100%;
         }
 
 
         .options {
+            border-radius: .325rem;
+            background-color: var(--background-header);
+            box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+            color: var(--color-text);
             display: none;
+            overflow: hidden;
             position: absolute;
             top: 55px;
             width: 100%;
-            color: hsl(200, 15%, 8%);
-            background-color: white;
-            border-radius: .325rem;
-            overflow: hidden;
-            box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
 
             &--active {
                 display: block;
@@ -42,11 +42,11 @@
 
         .option {
             display: block;
-            padding-left: 1.6rem;
             line-height: 2;
+            padding-left: 1.6rem;
 
             &:hover {
-                background-color: whitesmoke;
+                background-color: var(--background-hover);
             }
         }
 

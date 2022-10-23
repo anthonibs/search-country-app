@@ -1,28 +1,35 @@
+@use "/src/styles/variables";
+
 .control {
+    align-items: center;
+    display: flex;
+    max-width: 380px;
     position: relative;
     width: 100%;
-    max-width: 380px;
-    display: flex;
-    align-items: center;
 
     input {
         border-radius: .325rem;
         border: none;
-        display: block;
-        height: 50px;
-        width: 100%;
-        font-size: 14px;
-        font-weight: 300;
-        color: hsl(0, 0%, 52%);
+        background-color: var(--background-header);
         box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
-        padding-left: 64px;
+        color: var(--color-text-input);
+        display: block;
+        font-weight: variables.$font-w-1;
+        font-size: variables.$font-items;
+        height: 50px;
         outline: none;
+        padding-left: 64px;
+        width: 100%;
+
+        &::placeholder {
+            color: var(--color-text-input);
+        }
     }
 
     .icon {
-        position: absolute;
-        font-size: 1rem;
+        color: var(--color-text-input);
+        font-size: variables.$font-detail;
         left: 24px;
-        color: hsl(0, 0%, 52%);
+        position: absolute;
     }
 }
