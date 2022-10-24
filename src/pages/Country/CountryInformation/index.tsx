@@ -1,6 +1,3 @@
-import { useEffect, useState } from "react";
-import { BsCloudFogFill } from "react-icons/bs";
-import { IoLogoGameControllerA } from "react-icons/io";
 import styles from "./CountryInformation.module.scss";
 
 

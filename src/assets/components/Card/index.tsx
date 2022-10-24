@@ -1,4 +1,4 @@
-import ICountry from "interfaces/ICountry";
+import ICountry from "assets/interfaces/ICountry";
 import { Link } from "react-router-dom";
 import styles from "./Card.module.scss";
 
@@ -12,7 +12,7 @@ const Card = ({ country }: ICountry) => {
         <Link to={`country/${name.common}`} target="_self" className={styles.link__expand}>
             <article className={styles.card} >
                 <picture className={styles.card__image}>
-                    <img src={flags.png} alt="Bandeira do Brasil" />
+                    <img src={flags.png} alt={name.common} />
                 </picture>
                 <div className={styles.card__description}>
                     <h2 className={styles.title}>{name.common}</h2>

@@ -14,8 +14,6 @@ const Header = ({ title }: IProps) => {
         status: false,
         text: "Dark Mode",
     })
-    console.log(theme);
-    // console.log(theme.mode);
 
     function isActiveTheme() {
 

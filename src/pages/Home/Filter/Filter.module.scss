@@ -16,6 +16,10 @@
         text-align: left;
         width: 100%;
 
+        &--active {
+            background-color: var(--background-hover);
+        }
+
         .group {
             align-items: center;
             display: flex;

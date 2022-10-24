@@ -1,5 +1,6 @@
 import Card from "assets/components/Card";
 import Loading from "assets/components/Loading";
+import { loadingURL } from "assets/functions/loadingURL";
 import FieldInput from "pages/Home/FieldInpunt";
 import { useEffect, useState } from "react";
 import Filter from "./Filter";
@@ -7,48 +8,33 @@ import styles from "./Home.module.scss";
 
 const Home = () => {
 
-    const [countrys, setCountrys] = useState<any[]>([]);
+    const [countries, setCountries] = useState<any[]>([]);
     const [country, setCountry] = useState<string>("");
-    const [ordenador, setOrdenador] = useState("");
-
-    function carregaURL(url: string, opt?: any) {
-        fetch(url, opt)
-            .then(response => response.json())
-            .then(data => {
-                setCountrys(data);
-
-            })
-            .catch(erro => {
-                console.log(erro);
-            })
-    }
+    const [ordination, setOrdination] = useState("");
 
     useEffect(() => {
-        carregaURL("https://restcountries.com/v3.1/all");
-    }, [ordenador])
+        loadingURL("https://restcountries.com/v3.1/all", setCountries);
+    }, [ordination])
 
-    function testaBusca(title: string) {
+    function testSearch(title: string) {
         const regex = new RegExp(country, "i");
         return regex.test(title);
     }
 
-    function listaDeNove() {
+    function newFilteredList() {
         if (country.length > 0) {
-            return (countrys.filter(el => testaBusca(el.name.common)));
+            return (countries.filter(country => testSearch(country.name.common)));
         }
 
-        if (ordenador !== "") {
-            return countrys.filter(mapa => mapa.region == ordenador)
+        if (ordination !== "") {
+            return countries.filter(filter => filter.region == ordination)
         }
 
-
-        const randomOrder = countrys.sort(() => Math.random() > .5 ? 1 : -1);
+        const randomOrder = countries.sort(() => Math.random() > .5 ? 1 : -1);
         const spliceCountry = randomOrder.slice(0, 9);
 
         return spliceCountry
     }
-
-
 
     return (
         <main className={styles.container}>
@@ -61,12 +47,12 @@ const Home = () => {
                         onChange={setCountry}
 
                     />
-                    <Filter ordenador={ordenador} setOrdenador={setOrdenador} />
+                    <Filter ordination={ordination} setOrdination={setOrdination} />
                 </div>
                 <div className={styles.wrapper}>
-                    {listaDeNove().length > 0
-                        ? listaDeNove()?.map((country, index) => (
-                            <Card key={index} country={country} />
+                    {newFilteredList().length > 0
+                        ? newFilteredList()?.map(country => (
+                            <Card key={country.name.common} country={country} />
                         ))
                         : <Loading />
                     }
