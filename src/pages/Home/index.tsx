@@ -1,4 +1,5 @@
 import Card from "assets/components/Card";
+import Loading from "assets/components/Loading";
 import FieldInput from "pages/Home/FieldInpunt";
 import { useEffect, useState } from "react";
 import Filter from "./Filter";
@@ -67,12 +68,7 @@ const Home = () => {
                         ? listaDeNove()?.map((country, index) => (
                             <Card key={index} country={country} />
                         ))
-                        : <h2 className={styles.message}>
-                            Loading countries
-                            <span>.</span>
-                            <span className={styles.laoding}>.</span>
-                            <span>.</span>
-                        </h2>
+                        : <Loading />
                     }
                 </div>
             </section>

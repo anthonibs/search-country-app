@@ -5,6 +5,7 @@ import styles from "./Country.module.scss";
 import CountryInformation from "./CountryInformation";
 import { HiArrowNarrowLeft } from "react-icons/hi"
 import ICountry from "interfaces/ICountry";
+import Loading from "assets/components/Loading";
 
 
 const Country = () => {
@@ -44,12 +45,7 @@ const Country = () => {
 
                 {info.length > 0
                     ? <CountryInformation nation={info[0]} />
-                    : <h2 className={styles.message}>
-                        Loading countries
-                        <span>.</span>
-                        <span className={styles.laoding}>.</span>
-                        <span>.</span>
-                    </h2>
+                    : <Loading />
                 }
             </div>
 

@@ -13,19 +13,22 @@ const Header = ({ title }: IProps) => {
     const [theme, setTheme] = useState({
         status: false,
         text: "Dark Mode",
-        theme: "light"
     })
+    console.log(theme);
+    // console.log(theme.mode);
 
     function isActiveTheme() {
-        if (theme.status) {
-            setTheme({ status: false, text: "Dark Mode", theme: "light" })
-            localStorage.setItem("theme", theme.theme);
-        }
 
         if (theme.status === false) {
-            setTheme({ status: true, text: "Light Mode", theme: "dark" })
-            localStorage.setItem("theme", theme.theme);
+            setTheme({ status: true, text: "Light Mode" })
+            localStorage.setItem("theme", "dark");
         }
+
+        if (theme.status) {
+            setTheme({ status: false, text: "Dark Mode" })
+            localStorage.setItem("theme", "light");
+        }
+
     }
 
     useEffect(() => {
