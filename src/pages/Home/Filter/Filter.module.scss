@@ -5,24 +5,25 @@
     z-index: 1000;
 
     .select {
-        align-items: center;
         background-color: var(--background-header);
         box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
         border-radius: .325rem;
+        border: none;
         color: var(--color-text);
-        display: flex;
         height: 50px;
-        justify-content: space-between;
         position: relative;
+        padding: 0;
+        text-align: left;
+        width: 100%;
 
-        .select__active {
+        .group {
             align-items: center;
             display: flex;
+            height: inherit;
             justify-content: space-between;
             padding: 0 1.6rem;
             width: 100%;
         }
-
 
         .options {
             border-radius: .325rem;

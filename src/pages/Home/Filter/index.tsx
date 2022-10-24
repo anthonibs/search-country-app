@@ -13,18 +13,19 @@ const Filter = ({ ordenador, setOrdenador }: IFilter) => {
 
     const [aberto, setAberto] = useState(false);
     const nomeOrdenador = ordenador && regions.find(opcao => opcao.value === ordenador)?.name;
-
+ 
     return (
         <fieldset className={styles.control}>
-            <div
+            <button
                 className={css({
-                    [styles.select]: true
+                    [styles.select]: true,
+                    [styles["select--ativo"]]: ordenador !== ""
                 })}
-                onClick={() => setAberto(true)}
+                onClick={() => setAberto(!aberto)}
                 onBlur={() => setAberto(false)}
             >
-                <div className={styles.select__active}>
-                    {nomeOrdenador || "Filter by Region"}
+                <div className={styles.group}>
+                    <span>{nomeOrdenador || "Filter by Region"}</span>
                     {aberto ? <IoMdArrowDropdown size={20} /> : <IoMdArrowDropup size={20} />}
                 </div>
 
@@ -32,16 +33,15 @@ const Filter = ({ ordenador, setOrdenador }: IFilter) => {
                     [styles.options]: true,
                     [styles["options--active"]]: aberto
                 })}>
-                    {regions.map(item => (
-                        <div key={item.id} className={styles.option} onClick={() => setOrdenador(item.value)}>
-                            {item.name}
-                        </div>
-                    ))
-                    }
-                </div>
-            </div>
 
-        </fieldset>
+                    {regions.map(opcao => (
+                        <div className={styles.option} key={opcao.value} onClick={() => setOrdenador(opcao.value)}>
+                            {opcao.name}
+                        </div>
+                    ))}
+                </div>
+            </button>
+        </fieldset >
     )
 }
 
