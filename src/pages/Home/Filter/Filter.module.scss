@@ -1,3 +1,29 @@
+@use "/src/styles/variables";
+
+@keyframes downFilter {
+    0% {
+        transform: scaleY(0%);
+        transform-origin: top;
+    }
+
+    100% {
+        transform: scaleY(100%);
+        transform-origin: top;
+    }
+}
+
+@keyframes upFilter {
+    0% {
+        transform: scaleY(100%);
+        transform-origin: top;
+    }
+
+    100% {
+        transform: scaleY(0%);
+        transform-origin: top;
+    }
+}
+
 .control {
     height: 50px;
     position: relative;
@@ -14,6 +40,7 @@
         position: relative;
         padding: 0;
         text-align: left;
+        transition: variables.$transitionAll;
         width: 100%;
 
         &--active {
@@ -34,13 +61,16 @@
             background-color: var(--background-header);
             box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
             color: var(--color-text);
-            display: none;
+            display: block;
+            min-height: 100%;
             overflow: hidden;
             position: absolute;
             top: 55px;
             width: 100%;
+            animation: upFilter .3s forwards;
 
             &--active {
+                animation: downFilter .5s forwards;
                 display: block;
             }
         }
@@ -57,7 +87,4 @@
 
 
     }
-
-
-
 }

@@ -6,6 +6,7 @@
 body {
   background-color: var(--background);
   height: 100%;
+  transition: all .3s ease-in-out;
   width: 100%;
 }
 

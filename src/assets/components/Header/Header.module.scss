@@ -9,6 +9,7 @@
         height: 70px;
         position: fixed;
         top: 0;
+        transition: variables.$transitionAll;
         width: 100%;
         z-index: 10000;
 
