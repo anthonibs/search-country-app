@@ -31,7 +31,7 @@ const Home = () => {
         }
 
         const randomOrder = countries.sort(() => Math.random() > .5 ? 1 : -1);
-        const spliceCountry = randomOrder.slice(0, 9);
+        const spliceCountry = randomOrder.slice(0, 12);
 
         return spliceCountry
     }
