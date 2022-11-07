@@ -1,46 +1,100 @@
-# Getting Started with Create React App
+# SEARCH COUNTRIES APP
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## 🎓 Objetivos 
 
-## Available Scripts
+O projeto foi desenvolvido com a proposta de praticar REACT e Requisição na API, realizado desafio do site frontendmethor, objetivo é criar um site que faz consulta no e [REST Countries API](https://restcountries.com/) e retorna todos os países.
 
-In the project directory, you can run:
+## Demonstração
 
-### `npm start`
+[Veja uma demonstração](https://search-country-app.vercel.app/) do site.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Tecnologias
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+**Esse projeto foi desenvolvido com as seguintes tecnologias:**
 
-### `npm test`
+ - React-JS;
+ - TypeScript;
+- SCSS;
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+**Features**
+ - React-Router-Dom;
+- useState;
+- useEffects;
+- localStorage;
 
-### `npm run build`
+**Usuários devem ser capazes de:**
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- Veja todos os países da API na página inicial;
+- Pesquisar um país usando um input search;
+- Filtrar países por região;
+- Clique em um país para ver informações mais detalhadas em uma página separada;
+- Alterne o esquema de cores entre o modo Light/Dark;
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## 🖥️ Para dispositivos Móveis e Desktops.
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+**Tema Ligth/Dark**
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+Utilizei localStorage para armazenar os dados da variável  theme do site e por padrão vem Light. A lógica usada foi verificar se existe theme ativo no localStorage foi:
 
-## Learn More
+    const storedTheme = localStorage.getItem("theme") || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+    
+Caso ative o theme Dark a função **isActiveTheme** faz a verificação qual tema está ativo e adiciona no localStorage a `key: theme  e value: dark`.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+        const [theme, setTheme] = useState({
+        status: false,
+        text: "Dark Mode",
+    })
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+    function isActiveTheme() {
+        if (theme.status === false) {
+            setTheme({ status: true, text: "Light Mode" })
+            localStorage.setItem("theme", "dark");
+        }
+        if (theme.status) {
+            setTheme({ status: false, text: "Dark Mode" })
+            localStorage.setItem("theme", "light");
+        }
+    }
+
+Toda vezes que acessar o site o useEffect verifica qual tema está ativo e exibe na tela as cores referentes ao tema:
+  
+
+    useEffect(() => {
+        window.document.documentElement.setAttribute("data-theme", storedTheme);
+    }, [storedTheme])
+
+## 👨‍💻 Para Inicializar o projeto
+
+Para iniciar o projeto você precisa ter o Node.js instalado no seu sistema operacional.
+
+Ao fazer fork ou baixar o projeto de o comando para baixar as dependências:
+
+    cd search-country-app
+
+Instale as dependências usando o seguinte comando:
+
+    npm init 
+     ou  
+    npm i
+
+Executa o aplicativo no modo de desenvolvimento.
+Abra http://localhost:3000 para visualizá-lo em seu navegador.
+
+  
+
+    npm start
+
+A página será recarregada quando você fizer alterações.
+
+
+## ☕ Seja um dos contribuidores
+
+Quer fazer parte desse projeto? Clique [AQUI](https://github.com/anthonibs/search-country-app/blob/main/CONTRIBUTING.md) e leia como contribuir.
+
+
+## ✅ Licença
+Esse projeto está sob licença. Veja o arquivo [MIT](https://github.com/anthonibs/search-country-app/blob/main/LICENSE) para mais detalhes.
